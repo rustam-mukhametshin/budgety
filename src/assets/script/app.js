@@ -28,11 +28,27 @@ var UIController = (function () {
 // GLOBAL APP CONTROLLER
 var controller = (function (budgetCtrl, UICtrl) {
 
-    let DOM = UICtrl.getDOMStrings();
+    let setupEventListeners = function () {
+
+        let DOM = UICtrl.getDOMStrings();
+
+        document.querySelector(DOM.inputBtn).addEventListener('click', function () {
+        });
+
+        document.addEventListener('keypress', function (event) {
+
+            // Enter and numpadEnter
+            if (event.key === 'Enter') {
+
+            }
+        })
+    }
 
     return {
         init: function () {
-            console.info('Application has started.');
+            console.log('Application has started.');
+
+            setupEventListeners();
         }
     }
 
