@@ -18,6 +18,13 @@ var UIController = (function () {
 
     // Some code
     return {
+        getInput: function () {
+            return {
+                type: document.querySelector(DOMStrings.inputType).value,
+                description: document.querySelector(DOMStrings.inputDescription).value,
+                value: document.querySelector(DOMStrings.inputValue).value
+            }
+        },
         getDOMStrings: function () {
             return DOMStrings;
         }
@@ -32,16 +39,28 @@ var controller = (function (budgetCtrl, UICtrl) {
 
         let DOM = UICtrl.getDOMStrings();
 
-        document.querySelector(DOM.inputBtn).addEventListener('click', function () {
-        });
+        document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
 
         document.addEventListener('keypress', function (event) {
 
             // Enter and numpadEnter
             if (event.key === 'Enter') {
-
+                ctrlAddItem();
             }
         })
+    }
+
+    var ctrlAddItem = function () {
+        // 1. get input data
+        var input = UICtrl.getInput();
+
+        // 2. add time to bg ctrl
+
+        // 3. add new item to ui
+
+        // 4. calc bdg
+
+        // 5. display bdg
     }
 
     return {
