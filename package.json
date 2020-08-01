@@ -1,0 +1,41 @@
+{
+  "name": "budgety",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "module": "main.js",
+  "scripts": {
+    "start": "browser-sync start --server src --no-notify --no-ui --cwd src --files index.html,assets/*/**",
+    "editorconfig": "editorconfig-checker --exclude '.git|node_modules|.DS_Store|README.md|LICENSE'",
+    "html": "html-minifier --remove-comments --collapse-whitespace --input-dir src --output-dir dist --file-ext html",
+    "styles": "postcss src/assets/style/index.css --use postcss-import --use postcss-csso --no-map --output dist/assets/style/index.css",
+    "scripts": "npx babel src/assets/script/index.js --out-file dist/assets/script/index.js --presets=@babel/preset-env,@babel/flow",
+    "images": "copyfiles -u 1 src/assets/img/* dist",
+    "validate": "node-w3c-validator -i ./dist/**/*.html",
+    "build": "npm run html && npm run images && npm run styles && npm run scripts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iproman/budgety.git"
+  },
+  "author": "iproman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iproman/budgety/issues"
+  },
+  "homepage": "https://github.com/iproman/budgety#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-flow": "^7.10.4",
+    "browser-sync": "^2.26.7",
+    "copyfiles": "^2.3.0",
+    "editorconfig-checker": "^3.1.0",
+    "html-minifier": "^4.0.0",
+    "node-w3c-validator": "^1.6.2",
+    "postcss-cli": "^7.1.1",
+    "postcss-csso": "^4.0.0",
+    "postcss-import": "^12.0.1"
+  }
+}
