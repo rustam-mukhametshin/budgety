@@ -9,6 +9,13 @@ var budgetController = (function () {
 // UI CONTROLLER
 var UIController = (function () {
 
+    let DOMStrings = {
+        inputType: '.add__type',
+        inputDescription: '.add__description',
+        inputValue: '.add__value',
+        inputBtn: '.add__btn'
+    }
+
     // Some code
 
 }());
