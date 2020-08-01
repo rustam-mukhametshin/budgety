@@ -17,15 +17,18 @@ var UIController = (function () {
     }
 
     // Some code
-
+    return {
+        getDOMStrings: function () {
+            return DOMStrings;
+        }
+    }
 }());
 
 
 // GLOBAL APP CONTROLLER
 var controller = (function (budgetCtrl, UICtrl) {
 
-
-    // Some code
+    let DOM = UICtrl.getDOMStrings();
 
     return {
         init: function () {
