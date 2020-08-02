@@ -31,6 +31,18 @@ var budgetController = (function () {
 
     return {
         addItem: function (type, des, val) {
+
+            let newItem, ID;
+
+            // Create new ID // Todo: dynamic ID
+            ID = 0;
+
+            // Create new item base on 'inc' or 'exp' type
+            if (type === 'inc') {
+                newItem = new Income(ID, des, val);
+            } else if (type === 'exp') {
+                newItem = new Expense(ID, des, val);
+            }
         }
     };
 
