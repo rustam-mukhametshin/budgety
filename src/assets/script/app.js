@@ -17,6 +17,18 @@ var budgetController = (function () {
         }
     };
 
+    let data = {
+        allItems: {
+            exp: [],
+            inc: []
+        },
+
+        totals: {
+            exp: 0,
+            inc: 0
+        }
+    };
+
 }());
 
 
