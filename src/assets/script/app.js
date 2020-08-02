@@ -43,6 +43,9 @@ var budgetController = (function () {
             } else if (type === 'exp') {
                 newItem = new Expense(ID, des, val);
             }
+
+            // Push it into data structure
+            data.allItems[type].push(newItem);
         }
     };
 
