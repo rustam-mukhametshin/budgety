@@ -82,18 +82,19 @@ var controller = (function (budgetCtrl, UICtrl) {
     }
 
     var ctrlAddItem = function () {
-        // 1. get input data
         let input, newItem;
 
-        // 2. add time to bg ctrl
+        // 1. Get the field input data
         input = UICtrl.getInput();
 
-        // 3. add new item to ui
+        // 2. Add the item to the budget controller
         newItem = budgetCtrl.addItem(input.type, input.description, input.value);
 
-        // 4. calc bdg
+        // 3. Add the item to the UI
 
-        // 5. display bdg
+        // 4. Calculate the budget
+
+        // 5. Display the budget on the UI
     }
 
     return {
