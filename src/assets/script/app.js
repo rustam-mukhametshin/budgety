@@ -29,6 +29,11 @@ var budgetController = (function () {
         }
     };
 
+    return {
+        addItem: function (type, des, val) {
+        }
+    };
+
 }());
 
 
@@ -78,11 +83,13 @@ var controller = (function (budgetCtrl, UICtrl) {
 
     var ctrlAddItem = function () {
         // 1. get input data
-        var input = UICtrl.getInput();
+        let input, newItem;
 
         // 2. add time to bg ctrl
+        input = UICtrl.getInput();
 
         // 3. add new item to ui
+        newItem = budgetCtrl.addItem(input.type, input.description, input.value);
 
         // 4. calc bdg
 
