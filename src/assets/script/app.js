@@ -34,8 +34,9 @@ var budgetController = (function () {
 
             let newItem, ID;
 
-            // Create new ID // Todo: dynamic ID
-            ID = 0;
+            // Create new ID
+            ID = data.allItems[type].length > 0 ?
+                data.allItems[type][data.allItems[type].length - 1].id + 1 : 0;
 
             // Create new item base on 'inc' or 'exp' type
             if (type === 'inc') {
