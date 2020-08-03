@@ -79,7 +79,7 @@ var UIController = (function () {
             }
         },
         addListItem: function (obj, type) {
-            let html, element;
+            let html, newHtml, element;
 
             // Create HTML string with placeholder text
             if (type === 'inc') {
@@ -112,6 +112,11 @@ var UIController = (function () {
                     </div>
              `;
             }
+
+            // Replace the placeholder text with some actual data
+            newHtml = html.replace('%id%', obj.id)
+                .replace('%description%', obj.description)
+                .replace('%value%', obj.value);
 
         },
         getDOMStrings: function () {
