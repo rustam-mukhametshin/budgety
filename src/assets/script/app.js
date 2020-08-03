@@ -64,7 +64,9 @@ var UIController = (function () {
         inputType: '.add__type',
         inputDescription: '.add__description',
         inputValue: '.add__value',
-        inputBtn: '.add__btn'
+        inputBtn: '.add__btn',
+        incomeContainer: '.income__list',
+        expensesContainer: '.expenses__list',
     }
 
     // Some code
@@ -75,6 +77,17 @@ var UIController = (function () {
                 description: document.querySelector(DOMStrings.inputDescription).value,
                 value: document.querySelector(DOMStrings.inputValue).value
             }
+        },
+        addListItem: function (obj, type) {
+            let element;
+
+            // Create HTML string with placeholder text
+            if (type === 'inc') {
+                element = DOMStrings.incomeContainer;
+            } else if (type === 'exp') {
+                element = DOMStrings.expensesContainer;
+            }
+
         },
         getDOMStrings: function () {
             return DOMStrings;
@@ -111,6 +124,7 @@ var controller = (function (budgetCtrl, UICtrl) {
         newItem = budgetCtrl.addItem(input.type, input.description, +input.value);
 
         // 3. Add the item to the UI
+        UICtrl.addListItem(newItem, input.type);
 
         // 4. Calculate the budget
 
