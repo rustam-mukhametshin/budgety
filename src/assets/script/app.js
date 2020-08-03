@@ -48,6 +48,9 @@ var budgetController = (function () {
             // Push it into data structure
             data.allItems[type].push(newItem);
             data.totals[type] += val;
+
+            // Return the new element
+            return newItem;
         }
     };
 
