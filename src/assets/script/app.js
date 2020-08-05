@@ -1,6 +1,14 @@
 // BUDGET CONTROLLER
 var budgetController = (function () {
 
+    /**
+     * Private constructor for Expense.
+     * @param id
+     * @param description
+     * @param value
+     * @returns {{description: *, id: number, value: number}}
+     * @constructor
+     */
     let Expense = function (id, description, value) {
         return {
             id: id,
@@ -9,6 +17,14 @@ var budgetController = (function () {
         }
     };
 
+    /**
+     * Private constructor for Income.
+     * @param id
+     * @param description
+     * @param value
+     * @returns {{description: *, id: number, value: number}}
+     * @constructor
+     */
     let Income = function (id, description, value) {
         return {
             id: id,
