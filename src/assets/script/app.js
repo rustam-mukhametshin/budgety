@@ -50,6 +50,10 @@ var budgetController = (function () {
         return data;
     };
 
+    /**
+     * Budget data.
+     * @private
+     */
     let data = {
         allItems: {
             exp: [],
@@ -59,7 +63,8 @@ var budgetController = (function () {
         totals: {
             exp: 0,
             inc: 0
-        }
+        },
+        budget: 0
     };
 
     return {
@@ -84,6 +89,20 @@ var budgetController = (function () {
 
             // Return the new element
             return newItem;
+        },
+
+        /**
+         * Calculate budget.
+         * @public
+         * @param type
+         */
+        calculateBudget: function (type) {
+
+            // Calculate total income and expenses
+            calculateTotal(type);
+
+            // Calculate the budget: income - expenses
+            data.budget = data.totals.inc - data.totals.exp;
         }
     };
 
