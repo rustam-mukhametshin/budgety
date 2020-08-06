@@ -262,6 +262,15 @@ let controller = (function (budgetCtrl, UICtrl) {
         })
     }
 
+    /**
+     * Calculate and update budget.
+     * @private
+     */
+    let updateBudget = function () {
+        // 1. Calculate the budget
+        budgetCtrl.calculateBudget()
+    }
+
     var ctrlAddItem = function () {
         let input, newItem;
 
@@ -281,11 +290,10 @@ let controller = (function (budgetCtrl, UICtrl) {
 
             // 4. Clear the fields
             UICtrl.clearFields();
+
+            // Calculate and update budget
+            updateBudget();
         }
-
-        // 4. Calculate the budget
-
-        // 5. Display the budget on the UI
     }
 
     return {
