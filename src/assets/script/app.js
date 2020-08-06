@@ -1,8 +1,12 @@
-// BUDGET CONTROLLER
-var budgetController = (function () {
+/**
+ * BUDGET CONTROLLER
+ * @public
+ */
+let budgetController = (function () {
 
     /**
-     * Private constructor for Expense.
+     * Constructor for Expense.
+     * @private
      * @param id
      * @param description
      * @param value
@@ -18,7 +22,8 @@ var budgetController = (function () {
     };
 
     /**
-     * Private constructor for Income.
+     * Constructor for Income.
+     * @private
      * @param id
      * @param description
      * @param value
@@ -69,6 +74,15 @@ var budgetController = (function () {
     };
 
     return {
+
+        /**
+         * Adding new item (exp|inc) to data.
+         * @public
+         * @param type
+         * @param des
+         * @param val
+         * @returns {{description: *, id: number, value: number}}
+         */
         addItem: function (type, des, val) {
 
             let newItem, ID;
@@ -112,8 +126,11 @@ var budgetController = (function () {
 }());
 
 
-// UI CONTROLLER
-var UIController = (function () {
+/**
+ * UI CONTROLLER
+ * @public
+ */
+let UIController = (function () {
 
     let DOMStrings = {
         inputType: '.add__type',
@@ -124,8 +141,12 @@ var UIController = (function () {
         expensesContainer: '.expenses__list',
     }
 
-    // Some code
     return {
+        /**
+         * Get values from inputs.
+         * @public
+         * @returns {{description: *, type: *, value: number}}
+         */
         getInput: function () {
             return {
                 type: document.querySelector(DOMStrings.inputType).value,
@@ -133,6 +154,13 @@ var UIController = (function () {
                 value: parseFloat(document.querySelector(DOMStrings.inputValue).value)
             }
         },
+
+        /**
+         * Add list item (exp|inc) template to DOM.
+         * @public
+         * @param obj
+         * @param type
+         */
         addListItem: function (obj, type) {
             let html, newHtml, element;
 
@@ -178,9 +206,20 @@ var UIController = (function () {
             document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
 
         },
+
+        /**
+         * DOM selectors.
+         * @public
+         * @returns {{inputDescription: string, incomeContainer: string, inputValue: string, inputType: string, inputBtn: string, expensesContainer: string}}
+         */
         getDOMStrings: function () {
             return DOMStrings;
         },
+
+        /**
+         * Clear input fields.
+         * @public
+         */
         clearFields: function () {
             let fields, fieldsArray;
 
@@ -201,8 +240,12 @@ var UIController = (function () {
 }());
 
 
-// GLOBAL APP CONTROLLER
-var controller = (function (budgetCtrl, UICtrl) {
+/**
+ * GLOBAL APP CONTROLLER
+ * @public
+ * @type {{init: controller.init}}
+ */
+let controller = (function (budgetCtrl, UICtrl) {
 
     let setupEventListeners = function () {
 
@@ -246,6 +289,11 @@ var controller = (function (budgetCtrl, UICtrl) {
     }
 
     return {
+
+        /**
+         * Initializing application.
+         * @public
+         */
         init: function () {
             console.log('Application has started.');
 
@@ -255,4 +303,7 @@ var controller = (function (budgetCtrl, UICtrl) {
 
 }(budgetController, UIController));
 
+/**
+ * Run app.
+ */
 controller.init();
