@@ -120,6 +120,20 @@ let budgetController = (function () {
 
             // Calculate the percentage of income that spent
             data.percentage = Math.round((data.totals.exp / data.totals.inc) * 100);
+        },
+
+        /**
+         * Get budget data.
+         * @public
+         * @returns {{percentage: number, totalInc: number, totalExp: number, budget: number}}
+         */
+        getBudget: function () {
+            return {
+              budget: data.budget,
+              totalInc: data.totals.inc,
+              totalExp: data.totals.exp,
+              percentage: data.percentage
+            };
         }
     };
 
@@ -269,6 +283,9 @@ let controller = (function (budgetCtrl, UICtrl) {
     let updateBudget = function () {
         // 1. Calculate the budget
         budgetCtrl.calculateBudget()
+
+        // 2. Return the budget
+        let budget = budgetCtrl.getBudget();
     }
 
     var ctrlAddItem = function () {
