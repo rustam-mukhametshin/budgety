@@ -303,9 +303,9 @@ let controller = (function (budgetCtrl, UICtrl) {
      * Calculate and update budget.
      * @private
      */
-    let updateBudget = function () {
+    let updateBudget = function (type) {
         // 1. Calculate the budget
-        budgetCtrl.calculateBudget()
+        budgetCtrl.calculateBudget(type)
 
         // 2. Return the budget
         let budget = budgetCtrl.getBudget();
@@ -339,7 +339,7 @@ let controller = (function (budgetCtrl, UICtrl) {
             UICtrl.clearFields();
 
             // Calculate and update budget
-            updateBudget();
+            updateBudget(input.type);
         }
     }
 
