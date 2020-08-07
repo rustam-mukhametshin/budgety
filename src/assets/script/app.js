@@ -130,10 +130,10 @@ let budgetController = (function () {
          */
         getBudget: function () {
             return {
-              budget: data.budget,
-              totalInc: data.totals.inc,
-              totalExp: data.totals.exp,
-              percentage: data.percentage
+                budget: data.budget,
+                totalInc: data.totals.inc,
+                totalExp: data.totals.exp,
+                percentage: data.percentage
             };
         }
     };
@@ -280,6 +280,10 @@ let UIController = (function () {
  */
 let controller = (function (budgetCtrl, UICtrl) {
 
+    /**
+     * Event listeners for adding new item.
+     * @private
+     */
     let setupEventListeners = function () {
 
         let DOM = UICtrl.getDOMStrings();
@@ -310,6 +314,10 @@ let controller = (function (budgetCtrl, UICtrl) {
         UICtrl.displayBudget(budget);
     }
 
+    /**
+     * Add new item.
+     * @private
+     */
     var ctrlAddItem = function () {
         let input, newItem;
 
