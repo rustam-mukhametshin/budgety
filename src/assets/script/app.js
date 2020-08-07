@@ -188,7 +188,7 @@ let UIController = (function () {
                 element = DOMStrings.incomeContainer;
 
                 html = `
-                    <div class="item clearfix" id="income-%id%">
+                    <div class="item clearfix" id="inc-%id%">
                         <div class="item__description">%description%</div>
                         <div class="right clearfix">
                             <div class="item__value">+ %value%</div>
@@ -202,7 +202,7 @@ let UIController = (function () {
                 element = DOMStrings.expensesContainer;
 
                 html = `
-                  <div class="item clearfix" id="expense-%id%">
+                  <div class="item clearfix" id="exp-%id%">
                         <div class="item__description">%description%</div>
                         <div class="right clearfix">
                             <div class="item__value">- %value%</div>
