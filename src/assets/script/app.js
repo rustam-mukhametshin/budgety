@@ -352,6 +352,10 @@ let controller = (function (budgetCtrl, UICtrl) {
         init: function () {
             console.log('Application has started.');
 
+            // Display default values of budget.
+            UICtrl.displayBudget(budgetCtrl.getBudget());
+
+            // Event listeners for adding new item
             setupEventListeners();
         }
     }
