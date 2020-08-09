@@ -135,6 +135,29 @@ let budgetController = (function () {
                 totalExp: data.totals.exp,
                 percentage: data.percentage
             };
+        },
+        /**
+         * Remove item from data.
+         * @public
+         * @param type
+         * @param id
+         */
+        deleteItem(type, id) {
+            let ids, index;
+
+            // Get only id's.
+            ids = data.allItems[type]
+                .map(function (current, index, array) {
+                    return current.id;
+                })
+
+            // Find index of selected id from id's.
+            index = ids.indexOf(id);
+
+            // Remove from data item object.
+            if (index !== -1) {
+                data.allItems[type].splice(index, 1);
+            }
         }
     };
 
@@ -157,7 +180,8 @@ let UIController = (function () {
         budgetLabel: '.budget__value',
         incomeLabel: '.budget__income--value',
         expenseLabel: '.budget__expenses--value',
-        percentageLabel: '.budget__expenses--percentage'
+        percentageLabel: '.budget__expenses--percentage',
+        container: '.container',
     }
 
     return {
@@ -280,7 +304,9 @@ let controller = (function (budgetCtrl, UICtrl) {
             if (event.key === 'Enter') {
                 ctrlAddItem();
             }
-        })
+        });
+
+        document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
     }
 
     /**
@@ -324,6 +350,22 @@ let controller = (function (budgetCtrl, UICtrl) {
 
             // Calculate and update budget
             updateBudget(input.type);
+        }
+    };
+
+    let ctrlDeleteItem = function (event) {
+        let itemID, splitID, type, ID;
+
+        // Todo: Not appropriate.
+        itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
+
+        if (itemID) {
+            splitID = itemID.split('-');
+            type = splitID[0];
+            ID = parseInt(splitID[1]);
+
+            // 1. Delete the item from the budget data structure
+            budgetCtrl.deleteItem(type, ID);
         }
     }
 
