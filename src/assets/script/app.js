@@ -378,6 +378,9 @@ let controller = (function (budgetCtrl, UICtrl) {
 
             // 2. Delete then item from the UI
             UICtrl.deleteListItem(type + '-' + ID);
+
+            // 3. Update and show the new budget
+            updateBudget(type);
         }
     }
 
