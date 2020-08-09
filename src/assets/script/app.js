@@ -76,7 +76,7 @@ let budgetController = (function () {
     return {
 
         /**
-         * Adding new item (exp|inc) to data.
+         * Add new item (exp|inc) to data.
          * @public
          * @param type
          * @param des
@@ -235,6 +235,15 @@ let UIController = (function () {
         },
 
         /**
+         * Remove list item from the DOM.
+         * @public
+         * @param selectorId
+         */
+        deleteListItem: function (selectorId) {
+            document.getElementById(selectorId).remove();
+        },
+
+        /**
          * DOM selectors.
          * @public
          * @returns {{inputDescription: string, incomeContainer: string, inputValue: string, inputType: string, inputBtn: string, expensesContainer: string}}
@@ -366,6 +375,9 @@ let controller = (function (budgetCtrl, UICtrl) {
 
             // 1. Delete the item from the budget data structure
             budgetCtrl.deleteItem(type, ID);
+
+            // 2. Delete then item from the UI
+            UICtrl.deleteListItem(type, ID);
         }
     }
 
