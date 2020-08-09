@@ -5,37 +5,32 @@
 let budgetController = (function () {
 
     /**
-     * Constructor for Expense.
+     * Expense item.
      * @private
      * @param id
      * @param description
      * @param value
-     * @returns {{description: *, id: number, value: number}}
      * @constructor
      */
     let Expense = function (id, description, value) {
-        return {
-            id: id,
-            description: description,
-            value: value
-        }
+        this.id = id;
+        this.description = description;
+        this.value = value;
+        this.percentage = -1;
     };
 
     /**
-     * Constructor for Income.
+     * Income item.
      * @private
      * @param id
      * @param description
      * @param value
-     * @returns {{description: *, id: number, value: number}}
      * @constructor
      */
     let Income = function (id, description, value) {
-        return {
-            id: id,
-            description: description,
-            value: value
-        }
+        this.id = id;
+        this.description = description;
+        this.value = value;
     };
 
     /**
