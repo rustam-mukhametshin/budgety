@@ -145,16 +145,16 @@ let budgetController = (function () {
         deleteItem(type, id) {
             let ids, index;
 
-            // Get only id's.
+            // Get only id's
             ids = data.allItems[type]
                 .map(function (current, index, array) {
                     return current.id;
                 })
 
-            // Find index of selected id from id's.
+            // Find index of selected id from id's
             index = ids.indexOf(id);
 
-            // Remove from data item object.
+            // Remove from data item object
             if (index !== -1) {
                 data.allItems[type].splice(index, 1);
             }
@@ -339,6 +339,16 @@ let controller = (function (budgetCtrl, UICtrl) {
     }
 
     /**
+     * Calculate and update percentages.
+     * @private
+     */
+    let updatePercentages = function () {
+        // 1. Calculate percentages
+        // 2. Read percentages from the budget controller
+        // 3. Update the UI with the new percentages
+    }
+
+    /**
      * Add new item.
      * @private
      */
@@ -362,8 +372,11 @@ let controller = (function (budgetCtrl, UICtrl) {
             // 4. Clear the fields
             UICtrl.clearFields();
 
-            // Calculate and update budget
+            // 5. Calculate and update budget
             updateBudget(input.type);
+
+            // 6. Calculate and update percentages
+            updatePercentages();
         }
     };
 
@@ -386,6 +399,9 @@ let controller = (function (budgetCtrl, UICtrl) {
 
             // 3. Update and show the new budget
             updateBudget(type);
+
+            // 4. Calculate and update percentages
+            updatePercentages();
         }
     }
 
@@ -398,7 +414,7 @@ let controller = (function (budgetCtrl, UICtrl) {
         init: function () {
             console.log('Application has started.');
 
-            // Display default values of budget.
+            // Display default values of budget
             UICtrl.displayBudget(budgetCtrl.getBudget());
 
             // Event listeners for adding new item
