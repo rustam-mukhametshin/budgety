@@ -279,12 +279,17 @@ let UIController = (function () {
          * @param obj
          */
         displayBudget: function (obj) {
-            document.querySelector(DOMStrings.budgetLabel).textContent = obj.budget;
-            document.querySelector(DOMStrings.incomeLabel).textContent = obj.totalInc;
-            document.querySelector(DOMStrings.expenseLabel).textContent = obj.totalExp;
+            let budget, totalInc, totalExp, percentage;
 
-            document.querySelector(DOMStrings.percentageLabel).textContent =
-                (obj.percentage > 0 ? obj.percentage : '---');
+            budget = obj.budget > 0 ? '+ ' + obj.budget : obj.budget;
+            totalInc = obj.totalInc > 0 ? '+ ' + obj.totalInc : obj.totalInc;
+            totalExp = obj.totalExp > 0 ? '- ' + obj.totalExp : obj.totalExp;
+            percentage = obj.percentage > 0 ? obj.percentage + '%' : '---';
+
+            document.querySelector(DOMStrings.budgetLabel).textContent = budget;
+            document.querySelector(DOMStrings.incomeLabel).textContent = totalInc;
+            document.querySelector(DOMStrings.expenseLabel).textContent = totalExp;
+            document.querySelector(DOMStrings.percentageLabel).textContent = percentage;
         }
     }
 }());
