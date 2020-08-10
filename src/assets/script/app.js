@@ -29,6 +29,14 @@ let budgetController = (function () {
     };
 
     /**
+     * Get percentage.
+     * @return {number}
+     */
+    Expense.prototype.getPercentage = function () {
+        return this.percentage;
+    }
+
+    /**
      * Income item.
      * @private
      * @param id
@@ -135,6 +143,17 @@ let budgetController = (function () {
             data.allItems.exp.forEach(function (current, index, array) {
                 current.calcPercentage(data.allItems.inc);
             });
+        },
+
+        /**
+         * Get percentages.
+         * @public
+         * @return {number[]}
+         */
+        getPercentages: function () {
+            return data.allItems.exp.map(function (current) {
+                return current.getPercentage();
+            })
         },
 
         /**
@@ -359,7 +378,10 @@ let controller = (function (budgetCtrl, UICtrl) {
     let updatePercentages = function () {
         // 1. Calculate percentages
         budgetCtrl.calculatePercentages();
+
         // 2. Read percentages from the budget controller
+        let p = budgetCtrl.getPercentages();
+
         // 3. Update the UI with the new percentages
     }
 
