@@ -218,6 +218,37 @@ let UIController = (function () {
         expensePercentageLabel: '.item__percentage'
     }
 
+    /**
+     * Format numbers.
+     * @private
+     * @param number
+     * @param type
+     * @return {string}
+     */
+    let formatNumber = function (number, type) {
+        let numSplit, int, dec, symbol;
+
+        // Absolute int, floating points, split by dot
+        // Return string
+        numSplit = Math.abs(number)
+            .toFixed(2)
+            .split('.');
+
+        // Divide numbers
+        int = numSplit[0];
+        dec = numSplit[1];
+
+        // Add comma if number is greater than 3
+        if (int.length > 3) {
+            int = int.substr(0, int.length - 3) + ',' + int.substr(int.length - 3, 3);
+        }
+
+        // Add symbol. For exp or for inc
+        symbol = type === 'exp' ? '-' : '+'
+
+        return symbol + ' ' + int + '.' + dec;
+    };
+
     return {
         /**
          * Get values from inputs.
