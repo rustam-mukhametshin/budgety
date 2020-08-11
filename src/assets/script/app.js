@@ -277,13 +277,13 @@ let UIController = (function () {
                 element = DOMStrings.incomeContainer;
 
                 html = '<div class="item clearfix" id="inc-%id%"><div class="item__description">%description%</div>' +
-                    '<div class="right clearfix"><div class="item__value">+ %value%</div><div class="item__delete">' +
+                    '<div class="right clearfix"><div class="item__value">%value%</div><div class="item__delete">' +
                     '<button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
             } else if (type === 'exp') {
                 element = DOMStrings.expensesContainer;
 
                 html = '<div class="item clearfix" id="exp-%id%"><div class="item__description">%description%</div>' +
-                    '<div class="right clearfix"><div class="item__value">- %value%</div>' +
+                    '<div class="right clearfix"><div class="item__value">%value%</div>' +
                     '<div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn">' +
                     '<i class="ion-ios-close-outline"></i></button> </div> </div> </div>';
             }
@@ -291,7 +291,7 @@ let UIController = (function () {
             // Replace the placeholder text with some actual data
             newHtml = html.replace('%id%', obj.id)
                 .replace('%description%', obj.description)
-                .replace('%value%', obj.value);
+                .replace('%value%', formatNumber(obj.value, type));
 
 
             // Insert the HTML into the DOM
