@@ -215,6 +215,7 @@ let UIController = (function () {
         expenseLabel: '.budget__expenses--value',
         percentageLabel: '.budget__expenses--percentage',
         container: '.container',
+        expensePercentageLabel: '.item__percentage'
     }
 
     return {
@@ -323,6 +324,31 @@ let UIController = (function () {
             document.querySelector(DOMStrings.incomeLabel).textContent = totalInc;
             document.querySelector(DOMStrings.expenseLabel).textContent = totalExp;
             document.querySelector(DOMStrings.percentageLabel).textContent = percentage;
+        },
+
+        /**
+         * Update the UI with the new percentages.
+         * @public
+         * @param percentages
+         */
+        displayPercentages: function (percentages) {
+
+            // Get all percentage selectors.
+            let fields = document.querySelectorAll(DOMStrings.expensePercentageLabel);
+
+            // Loop through all node list
+            let nodeListForEach = function (list, callback) {
+                for (let i = 0; i < list.length; i++) {
+                    callback(list[i], i);
+                }
+            }
+
+            // Insert percentage
+            nodeListForEach(fields, function (current, index) {
+                current.textContent = percentages[index] > 0 ?
+                    percentages[index] + '%' :
+                    '---';
+            })
         }
     }
 }());
@@ -380,16 +406,17 @@ let controller = (function (budgetCtrl, UICtrl) {
         budgetCtrl.calculatePercentages();
 
         // 2. Read percentages from the budget controller
-        let p = budgetCtrl.getPercentages();
+        let percentages = budgetCtrl.getPercentages();
 
         // 3. Update the UI with the new percentages
+        UICtrl.displayPercentages(percentages);
     }
 
     /**
      * Add new item.
      * @private
      */
-    var ctrlAddItem = function () {
+    let ctrlAddItem = function () {
         let input, newItem;
 
         // 1. Get the field input data
