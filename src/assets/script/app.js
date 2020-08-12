@@ -250,6 +250,13 @@ let UIController = (function () {
         return symbol + ' ' + int + '.' + dec;
     };
 
+    // Loop through all node list
+    let nodeListForEach = function (list, callback) {
+        for (let i = 0; i < list.length; i++) {
+            callback(list[i], i);
+        }
+    }
+
     return {
         /**
          * Get values from inputs.
@@ -366,13 +373,6 @@ let UIController = (function () {
 
             // Get all percentage selectors.
             let fields = document.querySelectorAll(DOMStrings.expensePercentageLabel);
-
-            // Loop through all node list
-            let nodeListForEach = function (list, callback) {
-                for (let i = 0; i < list.length; i++) {
-                    callback(list[i], i);
-                }
-            }
 
             // Insert percentage
             nodeListForEach(fields, function (current, index) {
