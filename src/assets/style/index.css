@@ -321,3 +321,10 @@ h2 {
     font-weight: 900;
 }
 
+.red-focus:focus {
+    border: 1px solid #FF5049 !important;
+}
+
+.red {
+    color: #FF5049 !important;
+}
