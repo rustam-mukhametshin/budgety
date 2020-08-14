@@ -232,8 +232,7 @@ let UIController = (function () {
             .split('.');
 
         // Divide numbers
-        int = numSplit[0];
-        dec = numSplit[1];
+        [int, dec] = numSplit;
 
         // Add comma if number is greater than 3
         if (int.length > 3) {
@@ -328,9 +327,7 @@ let UIController = (function () {
 
             fieldsArray = Array.prototype.slice.call(fields);
 
-            fieldsArray.forEach(function (current, index, array) {
-                current.value = '';
-            })
+            fieldsArray.forEach(cur => cur.value = '')
 
             fieldsArray[0].focus();
         },
