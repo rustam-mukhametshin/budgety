@@ -199,7 +199,7 @@ let budgetController = (function () {
  */
 let UIController = (function () {
 
-    let DOMStrings = {
+    const DOMStrings = {
         inputType: '.add__type',
         inputDescription: '.add__description',
         inputValue: '.add__value',
