@@ -151,9 +151,7 @@ let budgetController = (function () {
          * @return {number[]}
          */
         getPercentages: function () {
-            return data.allItems.exp.map(function (current) {
-                return current.getPercentage();
-            })
+            return data.allItems.exp.map(current => current.getPercentage());
         },
 
         /**
@@ -180,9 +178,7 @@ let budgetController = (function () {
 
             // Get only id's
             ids = data.allItems[type]
-                .map(function (current, index, array) {
-                    return current.id;
-                })
+                .map(current => current.id)
 
             // Find index of selected id from id's
             index = ids.indexOf(id);
