@@ -325,7 +325,7 @@ let UIController = (function () {
                 DOMStrings.inputValue
             );
 
-            fieldsArray = Array.prototype.slice.call(fields);
+            fieldsArray = Array.from(fields);
 
             fieldsArray.forEach(cur => cur.value = '')
 
