@@ -387,14 +387,14 @@ let UIController = (function () {
          * when exp/inc selected.
          */
         changedType() {
-            let inputs, array;
+            let inputs, inputsNodeList;
 
             inputs = [DOMStrings.inputType, DOMStrings.inputDescription, DOMStrings.inputValue];
-            array = document.querySelectorAll(inputs.join(','));
+            inputsNodeList = document.querySelectorAll(inputs.join(','));
 
-            nodeListForEach(array, function (cur) {
-                cur.classList.toggle('red-focus');
-            })
+            for (const item of inputsNodeList) {
+                item.classList.toggle('red-focus');
+            }
 
             document.querySelector(DOMStrings.inputBtn).classList.toggle('red');
         }
