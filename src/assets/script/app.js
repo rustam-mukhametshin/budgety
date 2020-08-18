@@ -4,36 +4,36 @@
  */
 let budgetController = (function () {
 
-    /**
-     * Expense item.
-     * @private
-     * @param id
-     * @param description
-     * @param value
-     * @constructor
-     */
-    let Expense = function (id, description, value) {
-        this.id = id;
-        this.description = description;
-        this.value = value;
-        this.percentage = -1;
-    };
+    class Expense {
+        /**
+         * Expense item
+         * @param id
+         * @param description
+         * @param value
+         */
+        constructor(id, description, value) {
+            this.id = id;
+            this.description = description;
+            this.value = value;
+            this.percentage = -1;
+        }
 
-    /**
-     * Calculate percentage.
-     * @param totalIncome
-     */
-    Expense.prototype.calcPercentage = function (totalIncome) {
-        this.percentage = totalIncome > 0 ?
-            Math.round((this.value / totalIncome) * 100) : -1;
-    };
+        /**
+         * Calculate percentage.
+         * @param totalIncome
+         */
+        calcPercentage(totalIncome) {
+            this.percentage = totalIncome > 0 ?
+                Math.round((this.value / totalIncome) * 100) : -1;
+        }
 
-    /**
-     * Get percentage.
-     * @return {number}
-     */
-    Expense.prototype.getPercentage = function () {
-        return this.percentage;
+        /**
+         * Get percentage.
+         * @return {number}
+         */
+        getPercentage () {
+            return this.percentage;
+        }
     }
 
     /**
