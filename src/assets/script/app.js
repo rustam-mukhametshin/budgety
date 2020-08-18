@@ -31,24 +31,24 @@ let budgetController = (function () {
          * Get percentage.
          * @return {number}
          */
-        getPercentage () {
+        getPercentage() {
             return this.percentage;
         }
     }
 
-    /**
-     * Income item.
-     * @private
-     * @param id
-     * @param description
-     * @param value
-     * @constructor
-     */
-    let Income = function (id, description, value) {
-        this.id = id;
-        this.description = description;
-        this.value = value;
-    };
+    class Income {
+        /**
+         * Income item.
+         * @param id
+         * @param description
+         * @param value
+         */
+        constructor(id, description, value) {
+            this.id = id;
+            this.description = description;
+            this.value = value;
+        }
+    }
 
     /**
      * Calculate total income and expenses.
