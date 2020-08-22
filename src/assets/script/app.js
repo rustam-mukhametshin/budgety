@@ -4,9 +4,11 @@
  */
 let budgetController = (function () {
 
-    class Expense {
+    /**
+     * Budget class.
+     */
+    class Budget {
         /**
-         * Expense item
          * @param id
          * @param description
          * @param value
@@ -15,6 +17,20 @@ let budgetController = (function () {
             this.id = id;
             this.description = description;
             this.value = value;
+        }
+    }
+
+    /**
+     * Expense item.
+     */
+    class Expense extends Budget {
+        /**
+         * @param id
+         * @param description
+         * @param value
+         */
+        constructor(id, description, value) {
+            super(id, description, value)
             this.percentage = -1;
         }
 
@@ -36,17 +52,17 @@ let budgetController = (function () {
         }
     }
 
-    class Income {
+    /**
+     * Income item.
+     */
+    class Income extends Budget {
         /**
-         * Income item.
          * @param id
          * @param description
          * @param value
          */
         constructor(id, description, value) {
-            this.id = id;
-            this.description = description;
-            this.value = value;
+            super(id, description, value)
         }
     }
 
