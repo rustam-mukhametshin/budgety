@@ -252,7 +252,7 @@ let UIController = (function () {
         // Add symbol. For exp or for inc
         symbol = type === 'exp' ? '-' : '+'
 
-        return symbol + ' ' + int + '.' + dec;
+        return `${symbol} ${int}.${dec}`;
     };
 
     // Loop through all node list
