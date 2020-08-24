@@ -73,12 +73,9 @@ let budgetController = (function () {
      * @returns {{allItems: {exp: [], inc: []}, percentage: number, totals: {exp: number, inc: number}, budget: number}}
      */
     let calculateTotal = function (type) {
-        let sum = 0;
-        data.allItems[type].forEach(function (current, index, array) {
-            sum += current.value;
-        });
-
-        data.totals[type] = sum;
+        data.totals[type] = data.allItems[type]
+            .map(cur => cur.value)
+            .reduce((prev, cur) => prev + cur, 0);
 
         return data;
     };
