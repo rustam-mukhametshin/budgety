@@ -117,11 +117,8 @@ let budgetController = (function () {
                 data.allItems[type][data.allItems[type].length - 1].id + 1 : 0;
 
             // Create new item base on 'inc' or 'exp' type
-            if (type === 'inc') {
-                newItem = new Income(ID, des, val);
-            } else if (type === 'exp') {
-                newItem = new Expense(ID, des, val);
-            }
+            newItem = type === 'inc' ? new Income(ID, des, val) :
+                    type === 'exp' ? new Expense(ID, des, val) : '';
 
             // Push it into data structure
             data.allItems[type].push(newItem);
